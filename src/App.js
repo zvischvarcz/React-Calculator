@@ -11,14 +11,20 @@ function App() {
   
 
 
-  // useEffect(() => {
-    document.addEventListener("keypress", (event) => {
+  useEffect(() => {
+    const handleKeypress = (event) => {
       for(let i = 0; i < buttonContents.length; i++){
         if (event.key === buttonContents[i]) 
           sumFunc(event.key);
       }
-    })
-  // }, [])
+    }
+
+    document.addEventListener("keypress", handleKeypress);
+
+    return () =>{
+      document.removeEventListener("keypress", handleKeypress);
+    }
+  })
   
 
   const sumFunc = (char) => {
