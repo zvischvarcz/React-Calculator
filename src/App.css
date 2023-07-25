@@ -41,3 +41,12 @@
   font-size: 6vw;
   margin: 0.5vw;
 }
+
+.C-button {
+  background-color: rgb(255, 140, 0);
+}
+
+.sqrt-button{
+  font-size: 3.5vw;
+  height: 13vh;
+}
