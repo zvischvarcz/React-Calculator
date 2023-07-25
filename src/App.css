@@ -48,5 +48,7 @@
 
 .sqrt-button{
   font-size: 3.5vw;
-  height: 13vh;
+  padding: 2.8vh 0;
+  width: 7vw;
+  max-height: 110px;
 }
