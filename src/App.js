@@ -6,7 +6,6 @@ function App() {
   const [equalPressed, setEqualPressed] = useState( false);
   const [display, setDisplay] = useState("");
   const [answer, setAnswer] = useState("");
-  // const [currentAnswer, setCurrentAnswer] = useState();
   const buttonContents = [ "1", "2", "3", "C", "4", "5", "6", "*", "7", "8", "9", "/", "+", "0", "-", "=", "(", ")", "sqrt", "Ans"];
   
 
@@ -36,7 +35,6 @@ function App() {
       setEqualPressed(false);
     }else if (display === "" || equalPressed === true){
       setDisplay(display + char);
-      console.log(display, char)
       setEqualPressed(false);
     }else if (char !== "=" && char !== "C" && char !== "Ans"){
       setDisplay(display + char);
@@ -56,7 +54,6 @@ function App() {
     <div className='calcWrap'>
       <div className='textWrap'>
         <h1 className='text'>{display}</h1>
-        {/* <h2>{currentAnswer}</h2> */}
       </div>
       <div className='buttonWrap'>
         {buttonContents.map((char, index) => {
