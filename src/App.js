@@ -4,9 +4,9 @@ import './App.css';
 
 function App() {
   const [equalPressed, setEqualPressed] = useState( false);
-  const [display, setDisplay] = useState("");
+  const [display, setDisplay] = useState("0");
   const [answer, setAnswer] = useState("");
-  const buttonContents = [ "1", "2", "3", "C", "4", "5", "6", "*", "7", "8", "9", "/", "+", "0", "-", "=", "(", ")", "sqrt", "Ans"];
+  const buttonContents = ["7", "8", "9","(", ")", "sqrt", "4", "5", "6", "*", "/", "%", "1", "2", "3", "+", "-", ".", "0", "=","C","Ans"];
   
 
 
@@ -29,20 +29,24 @@ function App() {
   const sumFunc = (char) => {
     
     if(char === "C"){
-      setDisplay("");
+      setDisplay("0");
     } else if (char === "Ans"){
       setDisplay(answer);
       setEqualPressed(false);
-    }else if (display === "" || equalPressed === true){
-      setDisplay(display + char);
+    }else if (display === "" || equalPressed === true || display === "0"){
+      setDisplay(char);
       setEqualPressed(false);
     }else if (char !== "=" && char !== "C" && char !== "Ans"){
       setDisplay(display + char);
-      
     }else if(char === "="){
       setEqualPressed(true);
-      setAnswer(evaluate(display));
-      setDisplay(evaluate(display));
+      try {
+        setAnswer(evaluate(display));
+        setDisplay(evaluate(display));
+      }
+      catch(err){
+        setDisplay("Incorrect syntax, please try again.")
+      }
     }
     
   }
@@ -69,7 +73,7 @@ function App() {
 const Buttons = (props) => {
   return (
     <div>
-      <button className={props.char === "C" ? "C-button buttons" : props.char === "sqrt" ? "sqrt-button buttons" : props.char === "Ans" ? "sqrt-button buttons" : "buttons"} onClick={props.click}>{props.char}</button>
+      <button className={props.char === "C" ? "C-button buttons" : props.char === "sqrt" ? "sqrt-button buttons" : props.char === "0" ? "zero-button buttons" : props.char === "Ans" ? "sqrt-button buttons" : "buttons"} onClick={props.click}>{props.char}</button>
     </div>
   )
 }
